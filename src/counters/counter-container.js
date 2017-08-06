@@ -10,8 +10,8 @@ class CounterContainer extends React.Component{
 	render(){
 		return(
 			<div>
-			<CounterComponent denom="£1" weight="8.75"/>
-			<CounterComponent denom="50p" />
+			<CounterComponent denom="1" weight="8.75"/>
+			<CounterComponent denom="0.5" weight="8" />
 			</div>
 			)
 	}
