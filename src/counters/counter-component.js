@@ -6,14 +6,15 @@ class CounterComponent extends React.Component{
 	constructor(){
 		super();
 		this.state = {
-			weight: 0,
+			totalweight: 0,
+			totalvalue: null
 		};
 
 		this.handleChange = this.handleChange.bind(this);
 	}
 
 	calculateQuantity(){
-		let rawValue = this.state.weight / this.props.weight;
+		let rawValue = this.state.totalweight / this.props.weight;
 		return Math.round(rawValue);
 	}
 
@@ -23,20 +24,21 @@ class CounterComponent extends React.Component{
 
 
 	handleChange(event){
-		this.setState({weight: event.target.value});
-	}
+		this.setState({totalweight: event.target.value});
+		this.setState({totalvalue: this.calculateValue()});
+	}	
 
 	render(){
 		return(
 			<div id="component">
 			<div id="weightInput">
-					Weight of {this.props.denom}s	: <input type="number" value={this.state.weight} onChange={this.handleChange}></input>
+					Weight of {this.props.denom}s	: <input type="number" value={this.state.totalweight} onChange={this.handleChange}></input>
 			</div>
 			<div id ="valueOutput">
 				{this.calculateQuantity()} coins.
 			</div>
 			<div id="valueOfCoins">
-				£{this.calculateValue()}
+				£{this.state.totalvalue}
 			</div>
 			</div> //component div end
 			);
@@ -50,5 +52,5 @@ export default CounterComponent;
 / take away increment buttons from input field
 /line things up nicely
 /insert a totaliser
-/show values to 2dp
+/show values to 2dp (see react-number-format ?)
 */

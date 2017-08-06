@@ -5,12 +5,20 @@ class CounterContainer extends React.Component{
 
 	constructor(){
 		super();
+		this.state = {
+			coinSum: 0
+		};
+	}
+
+	componentDidUpdate(){
+		this.setState({coinSum: this.state.coinSum + 1});
 	}
 
 	render(){
 		return(
 			<div>
-			<CounterComponent denom="£2" value="2" weight="12"/>
+			<div>
+			<CounterComponent denom="£2" value="2" weight="12" />
 			<CounterComponent denom="old £1" value="1" weight="9.5"/>
 			<CounterComponent denom="new £1" value="1" weight="8.75"/>
 			<CounterComponent denom="50p" value="0.5" weight="8" />
@@ -19,9 +27,12 @@ class CounterContainer extends React.Component{
 			<CounterComponent denom="5p" value="0.05" weight="3.25"/>
 			<CounterComponent denom="2p" value="0.02" weight="7.12"/>
 			<CounterComponent denom="1p" value="0.01" weight="3.56"/>
-
 			</div>
-			)
+			<div>
+				{this.state.coinSum}
+			</div>
+			</div>
+		)
 	}
 }
 
