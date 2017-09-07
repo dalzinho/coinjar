@@ -3,42 +3,44 @@ import './component.css'
 
 class CounterComponent extends React.Component{
 
-	constructor(){
-		super();
+	constructor(props){
+		super(props);
 		this.state = {
-			totalweight: 0,
-			totalvalue: null
+			totalWeight: "",
 		};
 
 		this.handleChange = this.handleChange.bind(this);
 	}
 
 	calculateQuantity(){
-		let rawValue = this.state.totalweight / this.props.weight;
-		return Math.round(rawValue);
+		let quantity = Math.round(this.state.totalWeight / this.props.weight)
+		return quantity;
 	}
 
 	calculateValue(){
-		return this.calculateQuantity() * this.props.value;
+		return (this.calculateQuantity() * this.props.value).toFixed(3);
 	}
 
 
+	componentDidUpdate(){
+		console.log(this.state.totalWeight);
+	}
+
 	handleChange(event){
-		this.setState({totalweight: event.target.value});
-		this.setState({totalvalue: this.calculateValue()});
+		this.setState({totalWeight: event.target.value});
 	}	
 
 	render(){
 		return(
 			<div id="component">
 			<div id="weightInput">
-					Weight of {this.props.denom}s	: <input type="number" value={this.state.totalweight} onChange={this.handleChange}></input>
+					Weight of {this.props.denom}s	: <input type="number" value={this.state.totalWeight} onChange={this.handleChange}></input>
 			</div>
 			<div id ="valueOutput">
 				{this.calculateQuantity()} coins.
 			</div>
 			<div id="valueOfCoins">
-				£{this.state.totalvalue}
+				£{Math.round(this.calculateValue())}
 			</div>
 			</div> //component div end
 			);

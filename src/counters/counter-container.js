@@ -6,7 +6,17 @@ class CounterContainer extends React.Component{
 	constructor(){
 		super();
 		this.state = {
-			coinSum: 0
+			coins: [
+				new Coin("£2", 2, 12);
+				new Coin("old £1", 2, 12);
+				new Coin("new £1", 2, 12);
+				new Coin("50p", 2, 12);
+				new Coin("20p", 2, 12);
+				new Coin("10p", 2, 12);
+				new Coin("5p", 2, 12);
+				new Coin("2p", 2, 12);
+				new Coin("1p", 2, 12);
+			]
 		};
 	}
 
